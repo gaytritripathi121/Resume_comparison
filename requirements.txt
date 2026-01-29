@@ -5,3 +5,4 @@ spacy==3.7.2
 sentence-transformers==2.2.2
 torch==2.1.0
 werkzeug==3.0.1
+gunicorn==21.2.0
