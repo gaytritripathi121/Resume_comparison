@@ -1,0 +1,423 @@
+{
+  "Data Scientist": {
+    "description": "Analyze complex data sets using statistical methods and machine learning algorithms. Build predictive models and communicate insights to stakeholders. Work with big data technologies and visualization tools.",
+    "required_skills": [
+      "python",
+      "r",
+      "sql",
+      "machine learning",
+      "statistics",
+      "pandas",
+      "numpy",
+      "scikit-learn",
+      "tensorflow",
+      "pytorch",
+      "data visualization",
+      "tableau",
+      "power bi",
+      "deep learning",
+      "nlp",
+      "big data",
+      "spark",
+      "hadoop"
+    ],
+    "resources": {
+      "python": "https://www.coursera.org/specializations/python",
+      "machine learning": "https://www.coursera.org/learn/machine-learning",
+      "sql": "https://www.khanacademy.org/computing/computer-programming/sql",
+      "tensorflow": "https://www.tensorflow.org/tutorials",
+      "tableau": "https://www.tableau.com/learn/training"
+    }
+  },
+  "Web Developer": {
+    "description": "Design and develop responsive websites and web applications. Write clean, maintainable code using modern frameworks. Collaborate with designers and backend developers to create seamless user experiences.",
+    "required_skills": [
+      "html",
+      "css",
+      "javascript",
+      "react",
+      "vue",
+      "angular",
+      "node.js",
+      "express",
+      "mongodb",
+      "sql",
+      "git",
+      "rest api",
+      "responsive design",
+      "webpack",
+      "typescript",
+      "sass",
+      "bootstrap",
+      "tailwind"
+    ],
+    "resources": {
+      "javascript": "https://javascript.info/",
+      "react": "https://react.dev/learn",
+      "node.js": "https://nodejs.org/en/docs/guides/",
+      "git": "https://www.atlassian.com/git/tutorials",
+      "typescript": "https://www.typescriptlang.org/docs/"
+    }
+  },
+  "Machine Learning Engineer": {
+    "description": "Design, build, and deploy machine learning models at scale. Optimize model performance and integrate ML solutions into production systems. Work with data pipelines and cloud infrastructure.",
+    "required_skills": [
+      "python",
+      "machine learning",
+      "deep learning",
+      "tensorflow",
+      "pytorch",
+      "keras",
+      "scikit-learn",
+      "docker",
+      "kubernetes",
+      "aws",
+      "azure",
+      "gcp",
+      "mlops",
+      "model deployment",
+      "feature engineering",
+      "neural networks",
+      "computer vision",
+      "nlp"
+    ],
+    "resources": {
+      "deep learning": "https://www.deeplearning.ai/",
+      "pytorch": "https://pytorch.org/tutorials/",
+      "mlops": "https://www.coursera.org/learn/introduction-to-machine-learning-in-production",
+      "docker": "https://docs.docker.com/get-started/",
+      "aws": "https://aws.amazon.com/training/"
+    }
+  },
+  "UI/UX Designer": {
+    "description": "Create intuitive and visually appealing user interfaces. Conduct user research and usability testing. Design wireframes, prototypes, and high-fidelity mockups using industry-standard tools.",
+    "required_skills": [
+      "figma",
+      "sketch",
+      "adobe xd",
+      "photoshop",
+      "illustrator",
+      "user research",
+      "wireframing",
+      "prototyping",
+      "usability testing",
+      "design systems",
+      "responsive design",
+      "html",
+      "css",
+      "interaction design",
+      "user flows",
+      "typography",
+      "color theory"
+    ],
+    "resources": {
+      "figma": "https://www.figma.com/resources/learn-design/",
+      "user research": "https://www.nngroup.com/articles/",
+      "prototyping": "https://www.interaction-design.org/courses",
+      "design systems": "https://www.designsystems.com/",
+      "ux design": "https://www.coursera.org/professional-certificates/google-ux-design"
+    }
+  },
+  "DevOps Engineer": {
+    "description": "Automate and optimize development and deployment processes. Manage cloud infrastructure and implement CI/CD pipelines. Monitor system performance and ensure high availability.",
+    "required_skills": [
+      "linux",
+      "docker",
+      "kubernetes",
+      "jenkins",
+      "git",
+      "terraform",
+      "ansible",
+      "aws",
+      "azure",
+      "gcp",
+      "ci/cd",
+      "monitoring",
+      "prometheus",
+      "grafana",
+      "bash",
+      "python",
+      "networking",
+      "security"
+    ],
+    "resources": {
+      "kubernetes": "https://kubernetes.io/docs/tutorials/",
+      "terraform": "https://learn.hashicorp.com/terraform",
+      "jenkins": "https://www.jenkins.io/doc/tutorials/",
+      "aws": "https://aws.amazon.com/training/",
+      "docker": "https://docs.docker.com/get-started/"
+    }
+  },
+  "AI Researcher": {
+    "description": "Conduct research in artificial intelligence and develop novel algorithms. Experiment with deep learning, reinforcement learning, and NLP models to push the boundaries of AI.",
+    "required_skills": [
+      "python",
+      "pytorch",
+      "tensorflow",
+      "deep learning",
+      "machine learning",
+      "nlp",
+      "reinforcement learning",
+      "research methodology",
+      "statistics",
+      "data analysis",
+      "paper writing"
+    ],
+    "resources": {
+      "reinforcement learning": "https://www.coursera.org/learn/reinforcement-learning",
+      "nlp": "https://www.coursera.org/specializations/natural-language-processing",
+      "deep learning": "https://www.deeplearning.ai/"
+    }
+  },
+  "Cybersecurity Analyst": {
+    "description": "Protect systems and networks from cyber threats. Monitor security events, analyze vulnerabilities, and respond to incidents. Ensure compliance with security policies.",
+    "required_skills": [
+      "network security",
+      "firewalls",
+      "penetration testing",
+      "linux",
+      "python",
+      "incident response",
+      "encryption",
+      "siem",
+      "risk assessment"
+    ],
+    "resources": {
+      "network security": "https://www.coursera.org/learn/network-security",
+      "penetration testing": "https://www.offensive-security.com/pwk-oscp/",
+      "siem": "https://www.splunk.com/en_us/training.html"
+    }
+  },
+  "Data Analyst": {
+    "description": "Collect, process, and perform statistical analyses on large datasets. Create dashboards and reports to support business decisions.",
+    "required_skills": [
+      "excel",
+      "sql",
+      "python",
+      "pandas",
+      "statistics",
+      "tableau",
+      "power bi",
+      "data visualization",
+      "reporting"
+    ],
+    "resources": {
+      "excel": "https://www.coursera.org/learn/excel-essentials",
+      "sql": "https://www.khanacademy.org/computing/computer-programming/sql",
+      "tableau": "https://www.tableau.com/learn/training"
+    }
+  },
+  "Cloud Engineer": {
+    "description": "Design and manage scalable cloud infrastructure. Deploy and monitor applications on cloud platforms ensuring security, reliability, and performance.",
+    "required_skills": [
+      "aws",
+      "azure",
+      "gcp",
+      "docker",
+      "kubernetes",
+      "ci/cd",
+      "networking",
+      "monitoring",
+      "terraform",
+      "ansible"
+    ],
+    "resources": {
+      "aws": "https://aws.amazon.com/training/",
+      "docker": "https://docs.docker.com/get-started/",
+      "kubernetes": "https://kubernetes.io/docs/tutorials/"
+    }
+  },
+  "Product Manager": {
+    "description": "Define product strategy and roadmap. Work with engineering, design, and marketing teams to deliver products that meet user needs and business goals.",
+    "required_skills": [
+      "product strategy",
+      "roadmapping",
+      "agile",
+      "scrum",
+      "communication",
+      "market research",
+      "data analysis",
+      "stakeholder management",
+      "jira"
+    ],
+    "resources": {
+      "product strategy": "https://www.coursera.org/learn/product-management",
+      "agile": "https://www.coursera.org/learn/agile-development",
+      "jira": "https://www.atlassian.com/software/jira/guides"
+    }
+  },
+  "Mobile App Developer": {
+    "description": "Develop mobile applications for iOS and Android. Write clean and efficient code, integrate APIs, and ensure high performance and user-friendly experience.",
+    "required_skills": [
+      "flutter",
+      "dart",
+      "android studio",
+      "swift",
+      "kotlin",
+      "firebase",
+      "rest api",
+      "ui/ux",
+      "git"
+    ],
+    "resources": {
+      "flutter": "https://flutter.dev/docs",
+      "android studio": "https://developer.android.com/studio/intro",
+      "firebase": "https://firebase.google.com/docs"
+    }
+  },
+  "Blockchain Developer": {
+    "description": "Design and develop decentralized applications using blockchain technology. Create smart contracts and maintain security of blockchain networks.",
+    "required_skills": [
+      "solidity",
+      "smart contracts",
+      "ethereum",
+      "web3.js",
+      "cryptography",
+      "node.js",
+      "python",
+      "blockchain architecture"
+    ],
+    "resources": {
+      "solidity": "https://soliditylang.org/",
+      "ethereum": "https://ethereum.org/en/developers/",
+      "web3.js": "https://web3js.readthedocs.io/en/v1.7.0/"
+    }
+  },
+  "Frontend Developer": {
+    "description": "Build interactive and responsive user interfaces for web applications. Ensure high performance and compatibility across browsers and devices.",
+    "required_skills": [
+      "html",
+      "css",
+      "javascript",
+      "react",
+      "vue",
+      "angular",
+      "responsive design",
+      "git",
+      "webpack",
+      "sass",
+      "bootstrap",
+      "tailwind"
+    ],
+    "resources": {
+      "javascript": "https://javascript.info/",
+      "react": "https://react.dev/learn",
+      "git": "https://www.atlassian.com/git/tutorials"
+    }
+  },
+  "Backend Developer": {
+    "description": "Design and implement server-side logic, databases, and APIs. Ensure scalability, performance, and security of web applications.",
+    "required_skills": [
+      "node.js",
+      "express",
+      "python",
+      "django",
+      "flask",
+      "sql",
+      "mongodb",
+      "git",
+      "rest api",
+      "docker"
+    ],
+    "resources": {
+      "node.js": "https://nodejs.org/en/docs/guides/",
+      "django": "https://docs.djangoproject.com/en/4.2/",
+      "flask": "https://flask.palletsprojects.com/en/2.3.x/"
+    }
+  },
+  "Full Stack Developer": {
+    "description": "Develop complete web applications, including frontend, backend, and databases. Handle deployment, testing, and integration with APIs.",
+    "required_skills": [
+      "html",
+      "css",
+      "javascript",
+      "react",
+      "node.js",
+      "express",
+      "mongodb",
+      "sql",
+      "git",
+      "docker",
+      "ci/cd"
+    ],
+    "resources": {
+      "react": "https://react.dev/learn",
+      "node.js": "https://nodejs.org/en/docs/guides/",
+      "docker": "https://docs.docker.com/get-started/"
+    }
+  },
+  "QA Engineer": {
+    "description": "Test software applications for bugs and performance issues. Create automated and manual test cases and ensure quality standards are met.",
+    "required_skills": [
+      "manual testing",
+      "automation testing",
+      "selenium",
+      "python",
+      "java",
+      "test case design",
+      "bug tracking",
+      "jira",
+      "reporting"
+    ],
+    "resources": {
+      "selenium": "https://www.selenium.dev/documentation/",
+      "jira": "https://www.atlassian.com/software/jira/guides"
+    }
+  },
+  "Data Engineer": {
+    "description": "Build and maintain data pipelines and ETL processes. Ensure data quality, integrity, and availability for analytics and machine learning applications.",
+    "required_skills": [
+      "python",
+      "sql",
+      "spark",
+      "hadoop",
+      "etl",
+      "airflow",
+      "data warehousing",
+      "big data",
+      "aws",
+      "azure"
+    ],
+    "resources": {
+      "spark": "https://spark.apache.org/docs/latest/",
+      "airflow": "https://airflow.apache.org/docs/",
+      "hadoop": "https://hadoop.apache.org/docs/"
+    }
+  },
+  "Business Analyst": {
+    "description": "Analyze business processes and data to provide insights and recommendations. Work with stakeholders to gather requirements and improve workflows.",
+    "required_skills": [
+      "excel",
+      "sql",
+      "power bi",
+      "tableau",
+      "data analysis",
+      "communication",
+      "requirement gathering",
+      "process improvement"
+    ],
+    "resources": {
+      "excel": "https://www.coursera.org/learn/excel-essentials",
+      "power bi": "https://docs.microsoft.com/en-us/power-bi/",
+      "tableau": "https://www.tableau.com/learn/training"
+    }
+  },
+  "Digital Marketing Specialist": {
+    "description": "Plan and execute digital marketing campaigns across platforms. Analyze metrics and optimize campaigns to achieve business goals.",
+    "required_skills": [
+      "seo",
+      "sem",
+      "google ads",
+      "content marketing",
+      "social media",
+      "analytics",
+      "email marketing",
+      "branding"
+    ],
+    "resources": {
+      "seo": "https://www.coursera.org/learn/seo",
+      "google ads": "https://skillshop.withgoogle.com/",
+      "analytics": "https://analytics.google.com/analytics/academy/"
+    }
+  }
+}

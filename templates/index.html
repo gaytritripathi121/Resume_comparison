@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume & Skill Gap Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1> Resume & Skill Gap Analyzer</h1>
+            <p>Upload your resume and discover your perfect career match</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="resume">Upload Your Resume</label>
+                        <div class="file-upload">
+                            <input type="file" id="resume" name="resume" accept=".pdf,.docx" required>
+                            <label for="resume" class="file-label">
+                                <span class="file-icon">📄</span>
+                                <span class="file-text">Choose PDF or DOCX file</span>
+                            </label>
+                            <span class="file-name" id="fileName"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job_title">Select Target Job Title</label>
+                        <select id="job_title" name="job_title" required>
+                            <option value="">-- Choose a job title --</option>
+                            {% for job in job_titles %}
+                            <option value="{{ job }}">{{ job }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="analyzeBtn">
+                        <span class="btn-text">Analyze Resume</span>
+                        <span class="btn-loader" style="display: none;">
+                            <span class="spinner"></span> Analyzing...
+                        </span>
+                    </button>
+                </form>
+
+                <div class="error-message" id="errorMessage" style="display: none;"></div>
+            </div>
+
+            <div class="info-section">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Upload Resume</h3>
+                        <p>Upload your resume in PDF or DOCX format</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Select Job</h3>
+                        <p>Choose your target job title from our database</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Get Analysis</h3>
+                        <p>Receive detailed skill gap analysis and recommendations</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built with Flask, spaCy, and Sentence Transformers</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+                

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results - Resume Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Analysis Results</h1>
+            <a href="/" class="btn-secondary">← Analyze Another Resume</a>
+        </header>
+
+        <main>
+            <div class="results-container" id="resultsContainer">
+                <!-- Results will be injected here by JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const results = JSON.parse(sessionStorage.getItem('analysisResults'));
+        
+        if (!results) {
+            window.location.href = '/';
+        } else {
+            displayResults(results);
+        }
+
+        function displayResults(data) {
+            const container = document.getElementById('resultsContainer');
+            
+            const html = `
+                <div class="results-header">
+                    <h2>Results for: ${data.job_title}</h2>
+                    ${data.email ? `<p class="contact-info">📧 ${data.email}</p>` : ''}
+                    ${data.phone ? `<p class="contact-info">📱 ${data.phone}</p>` : ''}
+                </div>
+
+                <div class="match-score-section">
+                    <div class="score-card main-score">
+                        <h3>Overall Match</h3>
+                        <div class="circular-progress" data-score="${data.overall_match}">
+                            <svg width="150" height="150">
+                                <circle cx="75" cy="75" r="65" class="bg-circle"></circle>
+                                <circle cx="75" cy="75" r="65" class="progress-circle" 
+                                        style="stroke-dashoffset: ${408.4 - (408.4 * data.overall_match / 100)}"></circle>
+                            </svg>
+                            <div class="score-text">
+                                <span class="score-value">${data.overall_match}%</span>
+                            </div>
+                        </div>
+                        <p class="score-description">${getMatchDescription(data.overall_match)}</p>
+                    </div>
+
+                    <div class="score-breakdown">
+                        <div class="score-card">
+                            <h4>Semantic Match</h4>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: ${data.semantic_match}%"></div>
+                            </div>
+                            <p>${data.semantic_match}%</p>
+                        </div>
+                        
+                        <div class="score-card">
+                            <h4>Skill Match</h4>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: ${data.skill_match}%"></div>
+                            </div>
+                            <p>${data.skill_match}%</p>
+                        </div>
+
+                        <div class="score-card">
+                            <h4>Skills Found</h4>
+                            <p class="big-number">${data.matched_skills_count} / ${data.total_required_skills}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-section">
+                    <div class="skills-column">
+                        <h3> Your Skills (${data.user_skills.length})</h3>
+                        ${renderCategorizedSkills(data.categorized_user_skills)}
+                    </div>
+
+                    <div class="skills-column highlight">
+                        <h3> Missing Skills (${data.missing_skills_count})</h3>
+                        ${renderCategorizedSkills(data.categorized_missing_skills)}
+                        
+                        ${data.missing_skills_count === 0 ? 
+                            '<p class="success-message">🎉 Congratulations! You have all the required skills!</p>' : 
+                            ''}
+                    </div>
+                </div>
+
+                ${Object.keys(data.learning_resources).length > 0 ? `
+                <div class="resources-section">
+                    <h3> Recommended Learning Resources</h3>
+                    <div class="resources-grid">
+                        ${Object.entries(data.learning_resources).map(([skill, url]) => `
+                            <div class="resource-card">
+                                <h4>${capitalizeSkill(skill)}</h4>
+                                <a href="${url}" target="_blank" class="resource-link">
+                                    Start Learning →
+                                </a>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                ` : ''}
+
+                <div class="job-description-section">
+                    <h3> Job Description</h3>
+                    <p>${data.job_description}</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button onclick="window.print()" class="btn-secondary">🖨️ Print Results</button>
+                    <button onclick="downloadResults()" class="btn-secondary">💾 Download Report</button>
+                    <a href="/" class="btn-primary">Analyze Another Resume</a>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        function renderCategorizedSkills(categorized) {
+            if (!categorized || Object.keys(categorized).length === 0) {
+                return '<p class="no-skills">No skills in this category</p>';
+            }
+
+            return Object.entries(categorized).map(([category, skills]) => `
+                <div class="skill-category">
+                    <h4>${category}</h4>
+                    <div class="skill-tags">
+                        ${skills.map(skill => `
+                            <span class="skill-tag">${capitalizeSkill(skill)}</span>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getMatchDescription(score) {
+            if (score >= 80) return ' Excellent match! You\'re well-qualified for this role.';
+            if (score >= 60) return ' Good match! A few more skills could make you perfect.';
+            if (score >= 40) return ' Moderate match. Focus on developing key skills.';
+            return ' Significant gaps. Consider training in core areas.';
+        }
+
+        function capitalizeSkill(skill) {
+            return skill.split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+        }
+
+        function downloadResults() {
+            const results = JSON.parse(sessionStorage.getItem('analysisResults'));
+            const content = `
+Resume Analysis Report
+=====================
+Job Title: ${results.job_title}
+Overall Match: ${results.overall_match}%
+Semantic Match: ${results.semantic_match}%
+Skill Match: ${results.skill_match}%
+
+Your Skills (${results.user_skills.length}):
+${results.user_skills.join(', ')}
+
+Missing Skills (${results.missing_skills_count}):
+${results.missing_skills.join(', ')}
+
+Recommendations:
+${Object.entries(results.learning_resources).map(([skill, url]) => 
+    `- Learn ${skill}: ${url}`
+).join('\n')}
+            `.trim();
+
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `resume_analysis_${results.job_title.replace(/\s+/g, '_')}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
