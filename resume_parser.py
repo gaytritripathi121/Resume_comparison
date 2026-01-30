@@ -1,10 +1,6 @@
 import re
 from pdfminer.high_level import extract_text
 from docx import Document
-import spacy
-
-# Load spaCy model
-nlp = spacy.load("en_core_web_sm")
 
 # Common tech skills keywords (expanded list)
 SKILL_KEYWORDS = {
@@ -61,49 +57,21 @@ def extract_text_from_docx(file_path):
 
 def clean_text(text):
     """Clean and normalize text"""
-    # Remove extra whitespace
     text = re.sub(r'\s+', ' ', text)
-    # Remove special characters but keep important punctuation
     text = re.sub(r'[^\w\s\.\,\-\+\#]', ' ', text)
     return text.strip()
 
 
 def extract_skills(text):
-    """Extract skills from text using keyword matching and NLP"""
+    """Extract skills from text using keyword matching"""
     text_lower = text.lower()
     found_skills = set()
     
-    # Method 1: Direct keyword matching
+    # Direct keyword matching
     for skill in SKILL_KEYWORDS:
-        # Use word boundaries to avoid partial matches
         pattern = r'\b' + re.escape(skill) + r'\b'
         if re.search(pattern, text_lower):
             found_skills.add(skill)
-    
-    # Method 2: Multi-word phrase detection
-    # Handle special cases like "machine learning", "deep learning", etc.
-    multi_word_skills = [
-        'machine learning', 'deep learning', 'computer vision',
-        'natural language processing', 'nlp', 'data science',
-        'data visualization', 'web development', 'mobile development',
-        'cloud computing', 'artificial intelligence', 'big data',
-        'user experience', 'user interface', 'responsive design',
-        'rest api', 'feature engineering', 'model deployment',
-        'neural networks', 'object-oriented programming',
-        'functional programming', 'data structures'
-    ]
-    
-    for skill in multi_word_skills:
-        if skill in text_lower:
-            found_skills.add(skill)
-    
-    # Method 3: Using spaCy for entity recognition (optional enhancement)
-    doc = nlp(text[:1000000])  # Limit text size for performance
-    for ent in doc.ents:
-        if ent.label_ in ['ORG', 'PRODUCT', 'LANGUAGE']:
-            skill_text = ent.text.lower()
-            if skill_text in SKILL_KEYWORDS:
-                found_skills.add(skill_text)
     
     return list(found_skills)
 
@@ -124,25 +92,17 @@ def extract_phone(text):
 
 def parse_resume(file_path):
     """Main function to parse resume and extract information"""
-    # Determine file type and extract text
     if file_path.lower().endswith('.pdf'):
         raw_text = extract_text_from_pdf(file_path)
     elif file_path.lower().endswith('.docx'):
         raw_text = extract_text_from_docx(file_path)
     else:
-        return {
-            'error': 'Unsupported file format. Please upload PDF or DOCX.'
-        }
+        return {'error': 'Unsupported file format. Please upload PDF or DOCX.'}
     
     if not raw_text:
-        return {
-            'error': 'Could not extract text from file.'
-        }
+        return {'error': 'Could not extract text from file.'}
     
-    # Clean text
     cleaned_text = clean_text(raw_text)
-    
-    # Extract information
     skills = extract_skills(cleaned_text)
     email = extract_email(cleaned_text)
     phone = extract_phone(cleaned_text)
@@ -155,12 +115,3 @@ def parse_resume(file_path):
         'phone': phone,
         'skill_count': len(skills)
     }
-
-
-if __name__ == "__main__":
-    # Test the parser
-    test_file = "sample_resume.pdf"
-    result = parse_resume(test_file)
-    print("Extracted Skills:", result.get('skills', []))
-    print("Email:", result.get('email'))
-    print("Phone:", result.get('phone'))
