@@ -1,9 +1,7 @@
 import json
-from sentence_transformers import SentenceTransformer, util
-import torch
-
-# Load the sentence transformer model
-model = SentenceTransformer('all-MiniLM-L6-v2')
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
 
 
 def load_job_descriptions():
@@ -17,15 +15,23 @@ def load_job_descriptions():
 
 
 def calculate_semantic_similarity(resume_text, job_description):
-    """Calculate semantic similarity between resume and job description"""
-    resume_embedding = model.encode(resume_text, convert_to_tensor=True)
-    job_embedding = model.encode(job_description, convert_to_tensor=True)
+    """Calculate semantic similarity using TF-IDF"""
+    # Use TF-IDF vectorizer instead of sentence transformers
+    vectorizer = TfidfVectorizer(max_features=1000, stop_words='english')
     
-    similarity = util.cos_sim(resume_embedding, job_embedding)
-    
-    match_percentage = round(float(similarity[0][0]) * 100, 2)
-    
-    return match_percentage
+    try:
+        # Fit and transform both texts
+        tfidf_matrix = vectorizer.fit_transform([resume_text, job_description])
+        
+        # Calculate cosine similarity
+        similarity = cosine_similarity(tfidf_matrix[0:1], tfidf_matrix[1:2])[0][0]
+        
+        # Convert to percentage
+        match_percentage = round(similarity * 100, 2)
+        
+        return match_percentage
+    except:
+        return 0.0
 
 
 def calculate_skill_match(user_skills, required_skills):
@@ -182,15 +188,3 @@ def analyze_resume_for_job(resume_data, job_title):
         'learning_resources': learning_resources,
         'job_description': job_description
     }
-
-
-if __name__ == "__main__":
-    # Test the matcher
-    sample_resume_data = {
-        'cleaned_text': 'Data Scientist with experience in Python, SQL, and machine learning.',
-        'skills': ['python', 'sql', 'machine learning', 'pandas']
-    }
-    
-    result = analyze_resume_for_job(sample_resume_data, 'Data Scientist')
-    print("Overall Match:", result['overall_match'], "%")
-    print("Missing Skills:", result['missing_skills'])
