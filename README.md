@@ -11,9 +11,6 @@ An AI-powered web application that analyzes resumes against job requirements, id
 - **Learning Resources**: Receive curated course recommendations for missing skills
 - **Beautiful UI**: Clean, interactive Streamlit interface
 
-##  Live Demo
-
-[Try it here](https://your-streamlit-app-url.streamlit.app) *(Add your deployed URL)*
 
 ##  Requirements
 
@@ -88,9 +85,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 MIT License - feel free to use this project for learning or personal use.
 
-##  Author
 
-Your Name - [GitHub](https://github.com/yourusername)
 
 ##  Acknowledgments
 
